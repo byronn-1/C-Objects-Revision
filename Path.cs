@@ -1,6 +1,8 @@
+using System;
+
 namespace TreehouseDefense
 {
-    class Path
+    public class Path
     {
 
     }

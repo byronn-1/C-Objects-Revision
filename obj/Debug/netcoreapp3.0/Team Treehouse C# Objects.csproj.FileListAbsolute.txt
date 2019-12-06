@@ -1,0 +1,11 @@
+C:\Users\byrom\Documents\C# revision\Team Treehouse C# Objects\obj\Debug\netcoreapp3.0\Team Treehouse C# Objects.csprojAssemblyReference.cache
+C:\Users\byrom\Documents\C# revision\Team Treehouse C# Objects\obj\Debug\netcoreapp3.0\Team Treehouse C# Objects.AssemblyInfoInputs.cache
+C:\Users\byrom\Documents\C# revision\Team Treehouse C# Objects\obj\Debug\netcoreapp3.0\Team Treehouse C# Objects.AssemblyInfo.cs
+C:\Users\byrom\Documents\C# revision\Team Treehouse C# Objects\bin\Debug\netcoreapp3.0\Team Treehouse C# Objects.exe
+C:\Users\byrom\Documents\C# revision\Team Treehouse C# Objects\bin\Debug\netcoreapp3.0\Team Treehouse C# Objects.deps.json
+C:\Users\byrom\Documents\C# revision\Team Treehouse C# Objects\bin\Debug\netcoreapp3.0\Team Treehouse C# Objects.runtimeconfig.json
+C:\Users\byrom\Documents\C# revision\Team Treehouse C# Objects\bin\Debug\netcoreapp3.0\Team Treehouse C# Objects.runtimeconfig.dev.json
+C:\Users\byrom\Documents\C# revision\Team Treehouse C# Objects\bin\Debug\netcoreapp3.0\Team Treehouse C# Objects.dll
+C:\Users\byrom\Documents\C# revision\Team Treehouse C# Objects\bin\Debug\netcoreapp3.0\Team Treehouse C# Objects.pdb
+C:\Users\byrom\Documents\C# revision\Team Treehouse C# Objects\obj\Debug\netcoreapp3.0\Team Treehouse C# Objects.dll
+C:\Users\byrom\Documents\C# revision\Team Treehouse C# Objects\obj\Debug\netcoreapp3.0\Team Treehouse C# Objects.pdb
