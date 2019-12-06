@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
-    <RootNamespace>Team_Treehouse_C__Objects</RootNamespace>
+    <RootNamespace>TreehousDefense</RootNamespace>
   </PropertyGroup>
 
 </Project>
