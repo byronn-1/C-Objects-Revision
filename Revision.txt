@@ -1,0 +1,167 @@
+Object Orientated Programming With C#
+
+Objects relate to real Objects
+
+Objects have- attributes and behaviours
+
+
+********************
+TYPES-----
+
+Every object in C# is of a different type. In C# every value that a variable can take on is an object.  
+
+TYPES examples-- int, double or string
+
+we can create our own types though, thats what classes are for...
+
+A Class is a template for making individual objects of a particular type.
+
+(we can use "type" and "class" interchangably)
+
+Remember the cookie cutter analogy
+cookie-cutter = class
+cookie = object
+
+
+*******************
+Instantiation----
+
+basically any thing that is a noun can be declared as an object tower...
+Tower 
+Path
+Point
+Invader
+Map
+
+Its important to remember that for example the Tower class is not a "tower" itself its just a template. To create an actual object we need to use this class to create an object of TYPE Tower.
+to instantiate............
+we first say what type of object it is...
+
+Tower 
+
+then give the object a name....
+
+Tower bob
+
+then we assign it a new variable
+
+Tower bob = new Tower();
+
+This creates a new variable called bob with a lower case "b" that is of type tower with an upper case "T" and assigns it an newly created Tower object ( Tower() )
+
+So its convention to use upper case when naming classes because we can call the objects the same as their types or classes.
+
+("object" and "instance" can be used interchanably)
+
+Tower bob = new Tower();..........
+here we instantiated an instantce from the tower class.
+
+Just remember an object is an instance of a class.
+
+heres an exmple of making a class for invader...
+
+class Invader
+{
+
+}
+
+NOTE: you dont have to make a seperate file for each class and you dont have to name the file as same as the class. This is just a convention.
+
+
+**************
+Fields----
+
+To fill out a class we need to think about what types of attributes it has and then try to keep it to a minimum and keep it simple. E.G. with map there are two fields width and height. These fields will be declared right inside the class. We declare them simlarly to the way we declare variables inside of methods
+
+first we give them a title
+
+int 
+
+then we give them a name 
+
+int Width;
+
+Before we assign them values we need to make them acessable to other classes.....
+
+We have two access modifiers called 
+Public and Private 
+
+Private- Fields are only accesable to the same class that theyre declared in. (Unidentified Fields are private by default)
+
+e.g.
+
+public int Width;
+
+************************
+OBJECT INSTANTIATION----
+
+Constructor Methods- are special kind of methods that are used to construct new instances of a class. Constructor methods are named the same as the class they're in. 
+
+For Example....
+
+class Map 
+{
+ (1)  public int Width;
+      public int Height;
+
+  Map(int width, int height)
+  {
+   (2)  Width = width;
+        Height = height;
+  }
+}
+
+(1)... the width and Height Fields that are declared in 1  are instance variables and they exist as long as the instance is availiable
+
+(2) These variables are called method level variables because they only exist inside this method. And you can only use these variables inside this method.
+
+This is all about the variables scope the instance variables can be used by other methods and even other classes.
+
+Remember..... Constructor methods can't return any thing so theres no need to put a return type or even Void.
+
+You can put public on the constructor so other classes can constuct a Map using this constructor. 
+
+
+****************
+Methods----
+
+So far we've only learnt about an objects attributes, we now need to look at what an object can do or behaviours. 
+
+class Map 
+{
+  (1) public readonly int Width;
+      public readonly int Height;
+
+  (2) public Map(int width, int height)
+  {
+    Width = width;
+    Height = height;
+  }
+
+  (3) public bool OnMap(Point point)
+  {
+          bool inBounds = point.X >= 0 &&
+             point.X < Width && 
+             point.Y >= 0 && 
+             point.Y < Height;
+      return inBounds;
+  }
+
+}
+(3)........ is a method
+
+******************
+STATIC VS INSTANCE METHODS -----
+
+Static Methods are called directly on the class we dont neeed to construct an object before we can use them.
+
+e.g. 
+Math.sqrt((area),2);
+
+So here Math is capitalized because its the name of the math Class the suare root method is being called directly on the Math class theres no math object being used.
+
+
+******************
+USING STATIC METHODS-----
+
+

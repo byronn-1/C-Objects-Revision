@@ -1,6 +1,6 @@
 using System;
 
-namespace TreehousDefense
+namespace TreehouseDefense
 {
     class Point 
     {
@@ -22,10 +22,16 @@ namespace TreehousDefense
         int yDiffSquared = yDiff * yDiff;
 
        return (int)Math.Sqrt(xDiffSquared + yDiffSquared);
+      }
       /* 
       we could have writen this as this....
        return (int)Math.Sqrt(Math.Pow( X-x, 2 ) + Math.Pow( Y-y, 2 ));
       */
+
+      public int DistanceTo(Point point)
+      {
+        return DistanceTo(point.X, point.Y);
       }
-    }
+    //Here we've overloaded the method this means to have two methods with the same name that take different parameters.
+  }
 }
