@@ -163,5 +163,85 @@ So here Math is capitalized because its the name of the math Class the suare roo
 
 ******************
 USING STATIC METHODS-----
+errrrrrrrrrrr!!!
 
+******************
+WRITING THE CONSTRUCTOR FOR THE PATH CLASS ----
 
+So we need to think of the least amount of information its possble to model the path class. Soooo... Just the path location or MapLocations. We can pass these in as array of maploactions and store them as a field. Alought we arent going to let these be public.
+
+using System;
+
+namespace TreehouseDefense
+{
+  class Path
+  {
+    private MapLocation[] _path;
+  
+      public Path(MapLocation[] path)
+      {
+        _path = path;
+      }
+  }
+}
+
+The underscore helps to distinguish between instance variables and method variables. If we didnt have this wed either have to name these two variables differently (1) and (2).
+
+using System;
+
+namespace TreehouseDefense
+{
+  class Path
+  {
+    private MapLocation[] (1) _path;
+  
+      public Path(MapLocation[] (2)path)
+      {
+        _path = path;
+      }
+  }
+}
+
+or we'd have to type....
+
+using System;
+
+namespace TreehouseDefense
+{
+  class Path
+  {
+    private MapLocation[] _path;
+  
+      public Path(MapLocation[] path)
+      {
+        this.path = path;
+      }
+  }
+}
+
+READONLY----- 
+
+Something to be noted about readonly is that it only prohibits overriding the field with a different value. It doesnst prohibit any one from changing the individual values in the ararry. Thats the reason we're wrapping the field in a class in the first place. By wrapping the array in a class and private to restrict access thers no way for users of this class to alter the path.
+
+We've now used encapsulation to hide the array of maplocations 
+
+*******************
+TERNARY IF -------
+
+      public GetLocationAt(int pathStep)
+      {
+        if(pathStep < _path.Length)
+        {
+          return _path[pathStep];
+        }
+        else
+        {
+          return null;
+        }
+
+becomes......
+
+      public GetLocationAt(int pathStep)
+      {
+        return (pathStep < _path.Length) ? _path[pathStep] : null;
+      }
