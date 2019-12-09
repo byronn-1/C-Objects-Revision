@@ -1,4 +1,5 @@
 Object Orientated Programming With C#
+---------------------------------------
 
 Objects relate to real Objects
 
@@ -24,7 +25,7 @@ cookie = object
 
 
 *******************
-Instantiation----
+INSTANTIATION----
 
 basically any thing that is a noun can be declared as an object tower...
 Tower 
@@ -69,7 +70,8 @@ NOTE: you dont have to make a seperate file for each class and you dont have to 
 
 
 **************
-Fields----
+FIELDS----
+
 
 To fill out a class we need to think about what types of attributes it has and then try to keep it to a minimum and keep it simple. E.G. with map there are two fields width and height. These fields will be declared right inside the class. We declare them simlarly to the way we declare variables inside of methods
 
@@ -91,6 +93,42 @@ Private- Fields are only accesable to the same class that theyre declared in. (U
 e.g.
 
 public int Width;
+
+
+-- When it comes to fields the rule of thimb is to make all fields private then write public getters and setters that access it indirectly.
+
+This would force you to write alot of additional code for two methods for each field...........
+In comes properties 
+
+So instead of....
+class Invader
+    {
+      private MapLocation _location;
+
+      public MapLocation GetLocation()
+      {
+        return _location;
+      }
+
+      public void SetLocation(MapLocation value)
+      {
+        _location = value;
+      }
+    }
+      we could do this.........
+class Invader
+{
+       public MapLocation Location
+      {
+        get 
+        {
+          return _location;
+        }
+        set
+        {
+          _location = value;
+        }
+}
 
 ************************
 OBJECT INSTANTIATION----
@@ -245,3 +283,7 @@ becomes......
       {
         return (pathStep < _path.Length) ? _path[pathStep] : null;
       }
+
+
+*********************
+GETTERS AND SETTERS WITH CLASSES -----

@@ -47,11 +47,16 @@ namespace TreehouseDefense
           new MapLocation(7,2,map)
         }
       );
-      MapLocation location = path.GetLocationAt(8);
+      Invader invader = new Invader();
+      MapLocation location = new MapLocation(0,0,map);
+      // MapLocation location = path.GetLocationAt(8);
+      // if(location != null){
+      // Console.WriteLine(location.X + "," + location.Y);
+      // }
 
-      if(location != null){
-      Console.WriteLine(location.X + "," + location.Y);
-      }
+      invader.Location = location;
+      // this is not setting the location field directly this is calling the calling the settein insider the location property
+      Location = invader.Location;
   }
   catch(OutOfBoundsException ex)
   {
