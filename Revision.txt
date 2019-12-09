@@ -140,7 +140,10 @@ There are a number of reasons why you would add getter and setter methods instea
 3. It also future proofs the code, may be we dont want the loaction field to be stored in this class. We might move it to a different class that this class inturn uses, if that was the case we'd have to fix every other class that was directly accessing the location field.
 
 *************************
-PROPERTIES 
+PROPERTIES + GETTERS AND SETTERS
+
+REMEMBER Getters and Setters are PUBLIC by DEFAULT
+
 class Invader
 {
   private MapLocation _location;
@@ -278,6 +281,60 @@ Remember..... Constructor methods can't return any thing so theres no need to pu
 
 You can put public on the constructor so other classes can constuct a Map using this constructor. 
 
+****************
+COMPUTED PROPERTIES
+
+class Invader
+{
+  private readonly Path _path;
+  private int _pathStep = 0;
+
+  public MapLocation (1) Location { get; private set;}
+
+  public Invader (Path path)
+  {
+    _path = path;
+    Location = _path.GetLocation(_pathStep);
+  }
+
+  public void Move()
+  {
+    _pathStep += 1;
+    Location = _path.GetLocationAt(_pathStep);
+  }
+}
+
+
+So the problem here is that we have a property that must be updated every time that another field changes.
+We could fix this by computing the Location everytime its requested instead of storing it every time the path step field changes. (So long as its not an expensive operation)
+
+Here (1) is really a field a getter method and a setter method we'll rewrite it so that its computed eachtime the getter is called.....
+
+class Invader
+{
+  private readonly Path _path;
+  private int _pathStep = 0;
+
+  public MapLocation Location 
+  { 
+    get
+    {
+      return _path.GetLocationAt(_pathStep);
+    }
+  }
+
+  public Invader (Path path)
+  {
+    _path = path;
+  }
+
+  public void Move()
+  {
+    _pathStep += 1;
+  }
+}
+
+its difficult to decide whether to write a propety or a method. Theres sometimes a tendency to turn every method that doesnt have parameters in to a computed property. Properties intentionaly look like fields because they should be used like fields they should do simple things related to getting and setting data thats stored in the object. Theres also an expectation when using a property that its going to be returned quickly and be an inexpensive operation.
 
 ****************
 Methods----
@@ -406,3 +463,72 @@ becomes......
 
 *********************
 GETTERS AND SETTERS WITH CLASSES -----
+
+********************
+WHERE TO BLOODY START!!!!!!!!
+
+We will now code in Invader health...
+
+// invader health ......
+// variable to store how much health the invader has 
+// invader has to start out with an amount of health
+// tower class to decrease the health of the invader IF (they succsesfully hit it)
+
+So first of all we should decide what type of class members we need a property of a field and waht sort of accessability it should have.
+
+maybe answering the question of accessability first will help to decide what it is we will need.
+
+So is it reasonable for other classes to see how much health the invader has?? For example would it be helpful for the tower class to know how much health the invader has.... YES! So that means it should be public. So this means It should really be a property. Don't forget that getters and setters are public by default.
+
+So....
+
+class Invader
+{
+  public int Health {get; set;}
+}
+
+then we need to assign the health a starting value.... we could assign it to the constuctor
+
+class Invader
+{
+  public int Health {get; set;};
+  public Invader(Path path)
+  {
+    _path = path;
+    Health = 2;
+
+    public void DecreaseHealth(int factor)
+    {
+      Health -= factor;
+    }
+  }
+}
+
+or we could assign it a value where we declared it. in a case like this where the value is a litteral number that isnt passed into the constructor its probably better to assign it at the property.
+
+class Invader
+{
+  public int Health {get; set;} = 2;
+  public Invader(Path path)
+  {
+    _path = path;
+  }
+}
+
+Now we should add a way of decreasing the health. So we could do this by adding a method...
+
+class Invader
+{
+  public int Health {get; set;} = 2;
+
+  public Invader(Path path)
+  {
+    _path = path;
+  }
+
+  public void DecreaseHealth(int factor)
+  {
+    Health -= factor;
+  }
+}
+
