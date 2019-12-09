@@ -4,7 +4,7 @@ namespace TreehouseDefense
 {
     class Invader
     {
-      private MapLocation _location;
+      // private MapLocation _location;
 
      /*  public MapLocation GetLocation()
       {
@@ -16,7 +16,7 @@ namespace TreehouseDefense
         _location = value;
       } */
 
-      public MapLocation Location
+/*       public MapLocation Location
       {
         get 
         {
@@ -26,9 +26,10 @@ namespace TreehouseDefense
         {
           _location = value;
           // System.Console.WriteLine("location changed");
-        }
+        } */
+        public MapLocation Location { get; private set;}
       }
-    }
 }
+
 
 //Team_Treehouse_C__Objects

@@ -75,7 +75,7 @@ FIELDS----
 
 To fill out a class we need to think about what types of attributes it has and then try to keep it to a minimum and keep it simple. E.G. with map there are two fields width and height. These fields will be declared right inside the class. We declare them simlarly to the way we declare variables inside of methods
 
-first we give them a title
+first we give them a TYPE
 
 int 
 
@@ -83,7 +83,7 @@ then we give them a name
 
 int Width;
 
-Before we assign them values we need to make them acessable to other classes.....
+Before we assign them values we need to make them accessable to other classes.....
 
 We have two access modifiers called 
 Public and Private 
@@ -95,9 +95,12 @@ e.g.
 public int Width;
 
 
--- When it comes to fields the rule of thimb is to make all fields private then write public getters and setters that access it indirectly.
+-- When it comes to fields the rule of thumb is to make all fields private then write public getters and setters that access it indirectly.
+-Generally its a bad idea to make fields public because it exposes too much of the internal workings of the class. 
+-So a better way to go is to make fields private then write public methods to access the field.
 
 This would force you to write alot of additional code for two methods for each field...........
+
 In comes properties 
 
 So instead of....
@@ -118,6 +121,7 @@ class Invader
       we could do this.........
 class Invader
 {
+  private MapLocation _location;
        public MapLocation Location
       {
         get 
@@ -130,6 +134,121 @@ class Invader
         }
 }
 
+There are a number of reasons why you would add getter and setter methods instead of just making the location field public.
+1.It makes it possible to add code associated with reading and writing this field. -we can add code inside of these methods that will be excuted every time another class attempts to read or write the location.
+2.It makes debugging easier. You can set a break point on the method before the code runs in to the location field. (remember the location field is not excecutable all by itself, it just represents a place to store information. Unlike return _location; and _location = value; which are excecutable)
+3. It also future proofs the code, may be we dont want the loaction field to be stored in this class. We might move it to a different class that this class inturn uses, if that was the case we'd have to fix every other class that was directly accessing the location field.
+
+*************************
+PROPERTIES 
+class Invader
+{
+  private MapLocation _location;
+      public MapLocation Location
+    {
+      get 
+    {
+        return _location;
+    }
+      set
+    {
+        _location = value;
+    }
+}
+
+If you remove the getter......
+class Invader
+{
+  private MapLocation _location;
+    public MapLocation Location
+    {
+      set
+      {
+        _location = value;
+      }
+}
+Other classes can set the value of location but they can't get or read the location.
+Methods and other properties of the invader class can still read the location of the invader class by using the private field directly.
+
+If you remove the setter.......
+class Invader
+{
+  private MapLocation _location;
+       public MapLocation Location
+      {
+        get 
+        {
+          return _location;
+        }
+        set
+        {
+          _location = value;
+        }
+}
+Now other classes can get the location but they cant set the location.
+The location field isn't read only so methods and other properties with in the invader class can still set the location bysetting it directly.
+
+Once there is a propertie that gets and sets the field its generally bad practice to access the field directly. You should ignore the fact that the field is there and try to just use the property whenever possible. other wise haveing two different ways to change a field can be confusing.
+
+We still want to be able to restrict read and write access to the property though, instead of deleting the getter and setter we can use the private access modifier.
+
+If we put private on the get....
+class Invader
+{
+       public MapLocation Location
+      {
+        private get 
+        {
+          return _location;
+        }
+        set
+        {
+          _location = value;
+        }
+}
+Other classes will only be able to set the location.
+Methods and properties in the Invader class will still be able to get it though. IT IS FAIRLY RARE TO HAVE A PRIVATE GETTER AND A PUBLIC SETTERS
+
+On the other hand this is fairly normal....
+
+class Invader
+{
+       public MapLocation Location;
+      {
+        get 
+        {
+          return _location;
+        }
+        private set
+        {
+          _location = value;
+        }
+}
+
+Now other classes can get the location but they cant set it. 
+Methods and properties in the Invader class can stil set it though.
+
+WE CAN FURTHER SIMPLYFY THIS CODE--
+
+class Invader
+{
+  private MapLocation _location;
+       public MapLocation Location { get; set;}
+}
+
+so here we have...
+-got rid of the field 
+-replaced all the faff
+-and put it all on one line
+in C# this is called an AUTO PROPERTY 
+
+Its still used the same and we can still set the access to the getter and setters individually 
+
+class Invader
+{
+  private MapLocation _location;
+       public MapLocation Location { get; private set;}
+}
 ************************
 OBJECT INSTANTIATION----
 
